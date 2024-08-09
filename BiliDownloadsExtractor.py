@@ -8,9 +8,8 @@ from typing import Callable
 
 
 class Media:
-    """
-    存储一个视频对象，并记录其标题等信息
-    """
+    """存储一个视频对象，并记录其标题等信息"""
+
     def __init__(self, path: str):
         self._path: str = path
         self._video: str = os.path.join(path, "16\\video.m4s")
@@ -49,6 +48,7 @@ class Coll:
     """
     一个视频合集，类似于 `List[Media]` ，可以用 for-each 直接遍历其中的每一个 Media 对象
     """
+
     def __init__(self, path: str):
         self._path = path
         self._l: list[Media] = []
@@ -150,7 +150,7 @@ def extract_audio(media: Media, des_dir: str, fmt: str = 'mp3', copy: bool = Fal
 
 
 def extract_and_merge(media: Media, des_dir: str, fmt: str = 'mp4', copy: bool = False,
-                  get_name_func: Callable[[Media], str] = default_get_name_func):
+                      get_name_func: Callable[[Media], str] = default_get_name_func):
     """
     仅导出完整视频（同时有视频流和音频流）文件，并转换为某格式。
     Args:
@@ -171,16 +171,5 @@ def extract_and_merge(media: Media, des_dir: str, fmt: str = 'mp4', copy: bool =
     ffmpeg.run(out, overwrite_output=True, quiet=True)
 
 
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     ...
-
